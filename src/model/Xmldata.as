@@ -8,7 +8,7 @@ package model
 	/**
 	 * ...
 	 * @author René Skou
-	 * base class for loading all xml files for the Flashmenu
+	 * base class for loading all xml files for the UniversalMenu
 	 */
 	public class Xmldata 
 	{
@@ -34,7 +34,7 @@ package model
 			
 			if (allowDebug)
 			{
-				var baseUrl:String = "udvikling.cyberhus.dk/";
+				var baseUrl:String = "http://udvikling.cyberhus.dk/";
 				var startxml:String = "fmitems/1053";
 				var defaultxml:String = "fmblandet/alle";
 				
@@ -68,6 +68,7 @@ package model
 		private function xmlfilesLoaded(e:Event):void
 		{
 			defaultxml = baseloader.getXML("mediabox-default");
+			trace(defaultxml);
 		}
 		private function xmlfilesProgress(e:BulkProgressEvent):void
 		{
@@ -84,6 +85,7 @@ package model
 		{
 			return defaultxml;
 		}
+		
 	}
 
 }

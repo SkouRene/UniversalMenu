@@ -2,6 +2,7 @@ package
 {
 	import flash.display.Sprite;
 	import flash.events.Event;
+	import model.Xmldata;
 	
 	/**
 	 * ...
@@ -12,7 +13,9 @@ package
 		
 		public function Main():void 
 		{
-			
+			var ob:Xmldata = new Xmldata();
+			ob.init();
+			trace(ob.getDefaultxml());
 		}
 		
 
