@@ -47,7 +47,8 @@
   </includeLibraries>
   <!-- SWC Libraries -->
   <libraryPaths>
-    <!-- example: <element path="..." /> -->
+    <element path="lib\tweener\tweener.swc" />
+    <element path="lib\google\analytics.swc" />
   </libraryPaths>
   <!-- External Libraries -->
   <externalLibraryPaths>

@@ -12,7 +12,7 @@ package
 		
 		public function Main():void 
 		{
-			trace("Hallo world");
+			
 		}
 		
 
