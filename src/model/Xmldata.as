@@ -99,7 +99,8 @@ package model
 			
 		}
 		/**
-		 * Fires a event when defaultxml is defind and not null.
+		 * Fires a event when the load process is complete and 
+		 * defaultxml is defind and not null.
 		 */
 		 
 		private function xmlfilesLoaded(e:Event):void
