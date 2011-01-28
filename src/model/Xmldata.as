@@ -1,19 +1,52 @@
+/**
+ * base class for loading all xml files for the UniversalMenu
+ * 
+ * 
+ * @author René Skou
+ * @version 0.2
+ */
+/*
+ * Licensed under the MIT License
+ * 
+ * Copyright (c) 2010-2011 René Skou
+ * 
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of
+ * this software and associated documentation files (the "Software"), to deal in
+ * the Software without restriction, including without limitation the rights to
+ * use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+ * the Software, and to permit persons to whom the Software is furnished to do so,
+ * subject to the following conditions:
+ * 
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ * 
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+ * FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+ * COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+ * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+ * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ * 
+ * https://github.com/SkouRene/UniversalMenu
+ * http://www.opensource.org/licenses/mit-license.php
+ *    
+ */
 package model 
 {
 	import br.com.stimuli.loading.BulkLoader;
 	import br.com.stimuli.loading.BulkProgressEvent;
 	import flash.events.ErrorEvent;
 	import flash.events.Event;
+	import flash.events.EventDispatcher;
 	import flash.external.ExternalInterface;
-	/**
-	 * ...
-	 * @author René Skou
-	 * base class for loading all xml files for the UniversalMenu
-	 */
-	public class Xmldata 
+	
+
+	public class Xmldata extends EventDispatcher
 	{
 		private var baseloader:BulkLoader;
-		private var defaultxml:XML;
+		public var defaultXml:XML;
+		
+		public static const DEFAULTXML_LOADED:String = "dafaultxmlLoaded";
 		
 		//contructor not in use
 		public function Xmldata() 
@@ -65,10 +98,18 @@ package model
 			baseloader.start();
 			
 		}
+		/**
+		 * Fires a event when defaultxml is defind and not null.
+		 */
+		 
 		private function xmlfilesLoaded(e:Event):void
 		{
-			defaultxml = baseloader.getXML("mediabox-default");
-			trace(defaultxml);
+			defaultXml = baseloader.getXML("mediabox-default");
+			if (defaultXml != null)
+			{
+				dispatchEvent(new Event(Xmldata.DEFAULTXML_LOADED));
+			}
+			
 		}
 		private function xmlfilesProgress(e:BulkProgressEvent):void
 		{
@@ -79,12 +120,6 @@ package model
 			
 		}
 		//end of loading process.
-		
-		//get function to retrive data to populate mediabox with default text.
-		public function getDefaultxml():XML
-		{
-			return defaultxml;
-		}
 		
 		
 	}

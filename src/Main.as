@@ -10,12 +10,17 @@ package
 	 */
 	public class Main extends Sprite 
 	{
+		private var ob:Xmldata;
 		
 		public function Main():void 
 		{
-			var ob:Xmldata = new Xmldata();
+			ob = new Xmldata();
 			ob.init();
-			trace(ob.getDefaultxml());
+			ob.addEventListener(Xmldata.DEFAULTXML_LOADED, objloaded);
+		}
+		private function objloaded (e:Event):void
+		{
+			trace(ob.defaultXml);
 		}
 		
 
