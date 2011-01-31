@@ -1,11 +1,10 @@
-/**
- * base class for loading all xml files for the UniversalMenu
+/** UniversalMenu: base class for loading all files.
  * 
  * 
- * @author René Skou
- * @version 0.2
+ * @author René Skou.
+ * @version 0.2.
  */
-/*
+/**
  * Licensed under the MIT License
  * 
  * Copyright (c) 2010-2011 René Skou
@@ -40,7 +39,13 @@ package model
 	import flash.events.EventDispatcher;
 	import flash.external.ExternalInterface;
 	
-
+/**
+ * @langversion Actionscript 3.0.
+ * @playerversion Flash 10.0.
+ * 
+ * @author René Skou.
+ * @since 01.10.2010.
+ */
 	public class Xmldata extends EventDispatcher
 	{
 		private var baseloader:BulkLoader;
@@ -100,7 +105,7 @@ package model
 		}
 		/**
 		 * Fires a event when the load process is complete and 
-		 * defaultxml is defind and not null.
+		 * the xml object is not null.
 		 */
 		 
 		private function xmlfilesLoaded(e:Event):void
